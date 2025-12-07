@@ -29,4 +29,5 @@ COPY --from=file-creator /app/eula.txt .
 
 COPY --from=prepare /app/papermc.jar .
 
+ENV JAVA_OPTS="XX:-UseContainerSupport"
 ENTRYPOINT ["java", "-jar", "./papermc.jar", "-nogui"]
