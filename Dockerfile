@@ -12,6 +12,10 @@ FROM ubuntu:24.04
 
 WORKDIR /app
 
+RUN cat <<EOF > /app/eula.txt
+eula=true
+EOF
+
 RUN apt-get update && \
     apt-get install -y wget openjdk-25-jre && \
     apt-get clean && \
