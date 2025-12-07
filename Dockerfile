@@ -29,4 +29,4 @@ COPY --from=file-creator /app/eula.txt .
 
 COPY --from=prepare /app/papermc.jar .
 
-CMD ["./papermc.jar"]
+ENTRYPOINT ["java", "-jar", "./papermc.jar", "-nogui"]
