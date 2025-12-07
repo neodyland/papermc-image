@@ -1,9 +1,9 @@
-FROM ghcr.io/astral-sh/uv:latest AS prepare
+FROM ghcr.io/astral-sh/uv:bookworm AS prepare
 
 WORKDIR /app
 
 COPY pyproject.toml uv.lock ./
-RUN uv sync
+RUN uv sync --locked
 
 COPY . .
 RUN uv run main.py
