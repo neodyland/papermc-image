@@ -22,7 +22,7 @@ eula=true
 EOF
 
 RUN apt-get update && \
-    apt-get install -y openjdk-25-jre && \
+    apt-get install -y openjdk-25-jdk && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
