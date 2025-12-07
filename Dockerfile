@@ -13,7 +13,7 @@ RUN uv run main.py
 
 RUN wget -O papermc.jar $(cat latest.txt)
 
-FROM gcr.io/distroless/java21-debian12
+FROM ubuntu:24.04 AS file-creator
 
 WORKDIR /app
 
@@ -21,8 +21,12 @@ RUN cat <<EOF > /app/eula.txt
 eula=true
 EOF
 
+FROM gcr.io/distroless/java21-debian12
+
+WORKDIR /app
+
+COPY --from=file-creator /app/eula.txt .
+
 COPY --from=prepare /app/papermc.jar .
 
-COPY run.sh .
-
-CMD ["/bin/bash", "./run.sh"]
+CMD ["./papermc.jar"]
