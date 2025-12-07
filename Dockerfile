@@ -28,4 +28,6 @@ RUN apt-get update && \
 
 COPY --from=prepare /app/papermc.jar .
 
-CMD ["java", "-Xms512M", "-Xmx1024M", "-jar", "papermc.jar", "nogui"]
+COPY run.sh .
+
+CMD ["/bin/bash", "./run.sh"]
