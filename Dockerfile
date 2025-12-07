@@ -8,10 +8,10 @@ RUN apt-get update && \
 COPY pyproject.toml uv.lock ./
 RUN uv sync --locked
 
-RUN wget -O papermc.jar $(cat latest.txt)
-
 COPY . .
 RUN uv run main.py
+
+RUN wget -O papermc.jar $(cat latest.txt)
 
 FROM ubuntu:24.04
 
