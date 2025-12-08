@@ -27,6 +27,8 @@ WORKDIR /app
 
 COPY --from=file-creator /app/eula.txt .
 
+COPY server.properties .
+
 COPY --from=prepare /app/papermc.jar .
 
 ENV JAVA_OPTS="XX:-UseContainerSupport"
